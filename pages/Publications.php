@@ -8,15 +8,25 @@ if (isset($config['scopus_id']))
     echo "<a href=\"https://www.scopus.com/authid/detail.uri?authorId=";
     echo $config['scopus_id'];
     echo "\" target=\"blank\">SCOPUS</a>";
-    echo ".</p>";
   }
 
 if (isset($config['orcid_id']))
   {
-    echo "<p>For a summary of my bibliometric index you could visit ";
+  if (!(isset($config['scopus_id'])))   
+    { 
+      echo "<p>For a summary of my bibliometric index you could visit ";
+    }
+  else 
+    {
+      echo " and ";
+    }
     echo "<a href=\"https://orcid.org/";
     echo $config['orcid_id'];
     echo "\" target=\"blank\">ORCID</a>";
+    echo ".</p>";
+  }
+else
+  {
     echo ".</p>";
   }
 

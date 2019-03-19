@@ -1,8 +1,12 @@
 <?php 
 $config = parse_ini_file('config.ini');
+
 echo "<div class=\"row\">";
 echo "<div class=\"col-sm-5\" >";
-echo "<img class=\"img-responsive max-width: 80%; height: auto;\" src=\"logo_INFN.png\">";
+if (isset($config['logo']))
+  {
+    echo "<img class=\"img-responsive max-width: 100%; height: auto;\" src=\"".$config['logo']."\">";
+  }
 
 if (isset($config['short_description']))
   {
