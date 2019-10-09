@@ -1,0 +1,36 @@
+
+
+[b]This is a [i]bb code[/i] example[/b]
+A post could also be written in plain txt using bbcode markups.
+In such a case the end lines are respected
+
+$$ i\hbar\frac{\partial\psi}{\partial t} = H \psi $$
+
+[quote]
+Che fai tu, luna, in ciel? dimmi, che fai,
+Silenziosa luna?
+Sorgi la sera, e vai,
+Contemplando i deserti; indi ti posi.
+Ancor non sei tu paga
+Di riandare i sempiterni calli?
+...
+Forse s'avess'io l'ale
+Da volar su le nubi,
+E noverar le stelle ad una ad una,
+O come il tuono errar di giogo in giogo,
+Più felice sarei, dolce mia greggia,
+Più felice sarei, candida luna.[/quote]
+
+[code]
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
+int main()
+{
+  cout << "Hello World!" <<endl;
+  
+  return 0;
+}
+[/code]
