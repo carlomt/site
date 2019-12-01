@@ -16,4 +16,6 @@ The home page is created on the basis of the `config.ini` informations.
 
 This site creates also a bibliography page from a `bib` file, you can set the input file name in the `config.ini` file.
 
-You can also use latex equations (using MathJax), a formula is enclosed by `$$` and an inline formula by `$`
+You can also use latex equations (using MathJax), a formula is enclosed by `$$` and an inline formula by `$`.
+
+This code will create a responsive site using bootstrap (3.3.7)[https://getbootstrap.com/docs/3.3/getting-started/], bootstrap is not distributed with this project. By default, this code loads bootstrap from my personal webpage at Roma1 INFN, you are using this code from the same server it should work out of the box. Otherwise you can either download bootstrap locally or using the cloud version. In both the cases you have to edit the `template/header.htm` file.
