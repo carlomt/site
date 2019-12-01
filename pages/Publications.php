@@ -2,6 +2,9 @@
 $config = parse_ini_file('config.ini');
 require_once("./template/bibtex2html.php");         
 
+echo "<span id=\"badgeCont105\"><script type=\"text/javascript\" src=\"https://publons.com/mashlets?el=badgeCont105&rid=P-3012-2014\"></script></span>";
+
+
 if (isset($config['scopus_id']))
   {
     echo "<p>For a summary of my bibliometric index you could visit ";
@@ -9,6 +12,7 @@ if (isset($config['scopus_id']))
     echo $config['scopus_id'];
     echo "\" target=\"blank\">SCOPUS</a>";
   }
+
 
 if (isset($config['orcid_id']))
   {

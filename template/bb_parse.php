@@ -32,6 +32,7 @@
 function bb_parse($content, $nl2br = true) 
 {
     $pattern = array(
+        "/\[h\](.*)\[\/h\]/is",
         "/\[b\](.*)\[\/b\]/is",
         "/\[u\](.*)\[\/u\]/is",
         "/\[i\](.*)\[\/i\]/is",
@@ -50,6 +51,7 @@ function bb_parse($content, $nl2br = true)
     );
     
     $replacement = array(
+        "<h3>\\1</h3>",
         "<b>\\1</b>",
         "<u>\\1</u>",
         "<i>\\1</i>",
