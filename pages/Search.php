@@ -12,7 +12,9 @@ if (isset($config['disable_pages']))
 if(!empty($_GET['search']))
   {
     $word_to_search = $_GET['search'];
-    echo "<h2>Results looking for \"$word_to_search\"</h2>";
+    echo "<h2>Results looking for \"";
+    echo htmlspecialchars($word_to_search, ENT_QUOTES, 'UTF-8');
+    echo "\"</h2>";
     $found_pages = find_word_indir($word_to_search, "./pages/"); 
     if(!empty($found_pages))
       {

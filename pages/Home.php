@@ -3,10 +3,33 @@ $config = parse_ini_file('config.ini');
 
 echo "<div class=\"row\">";
 echo "<div class=\"col-sm-5\" >";
+echo "<div class=\"row\">";
 if (isset($config['logo']))
   {
-    echo "<img class=\"img-responsive max-width: 100%; height: auto;\" src=\"".$config['logo']."\">";
+    echo "<div class=\"col-md4\" >";	
+    // echo "<img class=\"img-responsive float-left max-width: auto; height: 100;\" src=\"".$config['logo']."\">";
+    echo "<img class=\"img-responsive max-height: 100px; max-width: 200px\" src=\"".$config['logo']."\">";
+    echo "</div>"; 
   }
+if (isset($config['logo2']))
+  {
+    echo "<div class=\"col-m3 ml-md-auto\" >";
+//    echo "<img class=\"img-responsive float-right max-width: auto; height: 100;\" src=\"".$config['logo2']."\">";
+    echo "<img class=\"img-responsive max-height: 100px;\" src=\"".$config['logo2']."\">";
+    echo "</div>";
+  }
+
+echo "</div>";
+echo "<div class=\"row\">";
+if (isset($config['logo-safe']))
+  {
+    echo "<div class=\"col\" >";
+    echo "<a href=\"https://web.uniroma1.it/fac_smfn/questione-di-genere\" target=blank>";
+    echo "<img class=\"img-responsive max-width: 100%; height: auto;\" src=\"".$config['logo-safe']."\">";
+    echo "</a>";
+    echo "</div>"; 
+  }
+echo "</div>";
 
 if (isset($config['short_description']))
   {
