@@ -35,7 +35,7 @@ function directoryToList($dirname, $disallowed_paths, $action)
                                         {
                                             echo "\"?action=\"";
                                         }
-                                    echo $filename+"/index.htm";
+                                    echo $filename."/index.htm";
                                     echo "class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">";
                                     echo preg_replace('/^\d/', '', $filename);
                                     echo "<span class=\"caret\"></span></a>";
