@@ -31,10 +31,19 @@ function thesis_level_badge($level, $level_style)
     return '<span class="label label-' . $style . '">' . htmlspecialchars($level, ENT_QUOTES, 'UTF-8') . '</span>';
 }
 
+function thesis_mailto($to, $subject, $cc)
+{
+    $cc = array_filter(is_array($cc) ? $cc : ($cc ? [$cc] : []));
+    $url = 'mailto:' . rawurlencode($to) . '?subject=' . rawurlencode($subject);
+    if (!empty($cc))
+        $url .= '&cc=' . rawurlencode(implode(',', $cc));
+    return $url;
+}
+
 // ── TESI PROPOSTE ──────────────────────────────────────────────────────────
 
-echo '<div class="page-header" style="margin-top:0"><h2>Tesi proposte</h2></div>';
-echo '<p class="text-muted">Per ulteriori informazioni su una tesi o per candidarsi contattami via email.</p>';
+echo '<div class="page-header" style="margin-top:0"><h2>Proposed theses</h2></div>';
+echo '<p class="text-muted">For further information about a thesis or to apply, contact me by email.</p>';
 
 $any_available = false;
 foreach ($fields as $subdir => $field_label) {
@@ -74,10 +83,13 @@ foreach ($fields as $subdir => $field_label) {
         echo '</div>';
 
         if (!empty($config['email'])) {
-            $mailto = 'mailto:' . htmlspecialchars($config['email'], ENT_QUOTES, 'UTF-8')
-                    . '?subject=' . rawurlencode('Tesi: ' . ($t['title'] ?? ''));
+            $mailto = thesis_mailto(
+                $config['email'],
+                'Thesis: ' . ($t['title'] ?? ''),
+                $t['cc'] ?? []
+            );
             echo '<div class="panel-footer">';
-            echo '<a href="' . $mailto . '" class="btn btn-sm btn-' . htmlspecialchars($style, ENT_QUOTES, 'UTF-8') . '">';
+            echo '<a href="' . htmlspecialchars($mailto, ENT_QUOTES, 'UTF-8') . '" class="btn btn-sm btn-' . htmlspecialchars($style, ENT_QUOTES, 'UTF-8') . '">';
             echo '<span class="glyphicon glyphicon-envelope"></span> Contattami</a>';
             echo '</div>';
         }
@@ -94,7 +106,7 @@ if (!$any_available)
 
 // ── TESI SVOLTE ────────────────────────────────────────────────────────────
 
-echo '<div class="page-header" style="margin-top:2em;"><h2>Tesi svolte</h2></div>';
+echo '<div class="page-header" style="margin-top:2em;"><h2>Completed theses</h2></div>';
 
 $any_completed = false;
 foreach ($fields as $subdir => $field_label) {
