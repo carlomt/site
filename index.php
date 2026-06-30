@@ -110,11 +110,20 @@ $dirname = "./pages";
 
 if (!empty($_GET['action']))
   {
-    $tmp_action = basename($_GET['action']);
-    if (!in_array($tmp_action, $disallowed_paths)
-	&& (file_exists("./pages/".$tmp_action.".php")
-	    || file_exists("./pages/".$tmp_action.".htm")
-	    || file_exists("./pages/".$tmp_action.".txt") ))
+    $tmp_action = $_GET['action'];
+    $pages_real = realpath('./pages');
+    $safe = false;
+    foreach (['.php', '.htm', '.txt'] as $ext) {
+      $candidate = './pages/' . $tmp_action . $ext;
+      if (file_exists($candidate)) {
+        $resolved = realpath($candidate);
+        if ($resolved !== false && strpos($resolved, $pages_real . DIRECTORY_SEPARATOR) === 0) {
+          $safe = true;
+          break;
+        }
+      }
+    }
+    if ($safe && !in_array($tmp_action, $disallowed_paths))
       $action = $tmp_action;
   }
 
