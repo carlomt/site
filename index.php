@@ -1,5 +1,4 @@
-<?php 
-ini_set('display_errors', 'On');
+<?php
 
 function directoryToList($dirname, $disallowed_paths, $action)
 {
@@ -130,8 +129,7 @@ $dirname = "./pages";
 
 if (!empty($_GET['action'])) 
   { 
-    //$tmp_action = basename($_GET['action']); 
-    $tmp_action = $_GET['action'];
+    $tmp_action = basename($_GET['action']);
     /* echo "./pages/".$tmp_action.".htm"; */
     
     // If it's not a disallowed path, and if the file exists, update $action 
@@ -162,7 +160,7 @@ echo "<div class=\"row\">\n";
 /* echo "<div class=\"jumbotron\">"; */
 echo "<div class=\"page-header\">\n";
 echo "<h1>";
-echo $pageTitle;
+echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8');
 echo "</h1>";
 echo "</div>\n"; 
 echo "</div>\n"; //row

@@ -61,7 +61,7 @@ function list_all_files_indir($dirname)
 	  {
 	    if($fileinfo->isDir())
 	      {
-		$tmp = list_all_files_indir($dirname.$filename);
+		$tmp = list_all_files_indir($dirname."/".$filename);
 		foreach ($tmp as &$value)
 		  {
 		    $value = $filename."/".$value;

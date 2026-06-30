@@ -13,9 +13,9 @@ if (isset($config['sidebar_links']))
   foreach( $links as $name => $link ) 
     {
       echo "<li class=\"list-group-item\"><a href=\"";
-      echo $link;
+      echo htmlspecialchars($link, ENT_QUOTES, 'UTF-8');
       echo "\" target=\"blank\">";
-      echo $name;
+      echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
       echo "</a></li>";
     }
   echo "</ul>";

@@ -13,13 +13,19 @@ $purifier = new HTMLPurifier($config_htmlpurifier);
 
 if(!empty($_GET['blogaction']))
     {
-        $tmp_action = $_GET['blogaction'];
+        $tmp_action = basename($_GET['blogaction']);
         $filename = "./posts/".$tmp_action;
+        if (!file_exists($filename))
+            {
+                echo "<div class=\"well\"><p>Post not found.</p></div>";
+            }
+        else
+            {
         $withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($filename));
         $file_parts = pathinfo($filename);
         $postTitle = str_replace('_', ' ', $withoutExt);
         echo "<div class=\"well\">";
-        echo "<h2>".$postTitle."</h2>";
+        echo "<h2>".htmlspecialchars($postTitle, ENT_QUOTES, 'UTF-8')."</h2>";
         echo "<h4><small>".date("F d Y H:i:s.", filectime($filename)) ."</small></h4>";
         switch($file_parts['extension'])
             {
@@ -41,6 +47,7 @@ if(!empty($_GET['blogaction']))
                 break;
             }
         echo "</div>"; //well
+            } // end file_exists
   }
 else
     {
@@ -74,7 +81,7 @@ else
         $iPostLimit = $postsPerPage;
         if(!empty($_GET['firstpost']))
 	  {
-	    $iStartingPost = $_GET['firstpost'];
+	    $iStartingPost = max(0, intval($_GET['firstpost']));
 	    $iPostLimit = $iStartingPost + $postsPerPage;
 	  }
         if ( $iPostLimit > sizeof($files) )
@@ -99,7 +106,7 @@ else
 		  {
 		    echo "<a href=?action=Blog&blogaction=".$thisfile.">";
 		  }
-	    echo $postTitle;
+	    echo htmlspecialchars($postTitle, ENT_QUOTES, 'UTF-8');
 	    echo "</a></h2>";
 	    echo "<h4><small>".date("d F Y", filectime($filename)) ."</small></h4>";
 	    echo "<hr />";

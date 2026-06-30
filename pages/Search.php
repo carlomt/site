@@ -30,13 +30,13 @@ if(!empty($_GET['search']))
 		$withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $filename);
 		$withoutNum = preg_replace('/^\d/', '', $withoutExt);
 		$withoutUnder = str_replace('_', ' ', $withoutNum);
-		echo "<div class=\"well\">"; 
-		echo "<h3><a href=\"?action=$withoutExt\">".$withoutUnder."</a></h3>";
+		echo "<div class=\"well\">";
+		echo "<h3><a href=\"?action=".htmlspecialchars($withoutExt, ENT_QUOTES, 'UTF-8')."\">".htmlspecialchars($withoutUnder, ENT_QUOTES, 'UTF-8')."</a></h3>";
 		echo "<hr />";
 		echo "<p>";
 		foreach (array_slice($page,1) as $word)
 		  {
-		    echo " ".$word;
+		    echo " ".htmlspecialchars($word, ENT_QUOTES, 'UTF-8');
 		  }
 		echo "... </p>";
 		echo"</div>\n";
@@ -65,13 +65,13 @@ if(!empty($_GET['search']))
 		$withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $filename);
 		$withoutNum = preg_replace('/^\d/', '', $withoutExt);
 		$withoutUnder = str_replace('_', ' ', $withoutNum);
-		echo "<div class=\"well\">"; 
-		echo "<h3><a href=\"?action=Blog&blogaction=$filename\">$withoutUnder </a></h3>";
+		echo "<div class=\"well\">";
+		echo "<h3><a href=\"?action=Blog&blogaction=".htmlspecialchars($filename, ENT_QUOTES, 'UTF-8')."\">".htmlspecialchars($withoutUnder, ENT_QUOTES, 'UTF-8')."</a></h3>";
 		echo "<hr />";
-		echo "<p>";		
+		echo "<p>";
 		foreach (array_slice($page,1) as $word)
 		  {
-		    echo " ".$word;
+		    echo " ".htmlspecialchars($word, ENT_QUOTES, 'UTF-8');
 		  }
 		echo "... </p>";
 		echo"</div>\n";
