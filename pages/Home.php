@@ -7,14 +7,14 @@ if (isset($config['logo']))
   {
     echo "<div class=\"row\">";
     echo "<div class=\"col-xs-12\">";
-    echo "<img style=\"max-height:100px;\" src=\"".htmlspecialchars($config['logo'], ENT_QUOTES, 'UTF-8')."\">";
+    echo "<img style=\"max-height:100px; margin-left:-75px;\" src=\"".htmlspecialchars($config['logo'], ENT_QUOTES, 'UTF-8')."\">";
     echo "</div>";
     echo "</div>";
   }
 if (isset($config['logo2']))
   {
     echo "<div class=\"row\">";
-    echo "<div class=\"col-xs-12\" style=\"padding-left:90px;\">";
+    echo "<div class=\"col-xs-12\">";
     echo "<img style=\"max-height:80px;\" src=\"".htmlspecialchars($config['logo2'], ENT_QUOTES, 'UTF-8')."\">";
     echo "</div>";
     echo "</div>";
@@ -22,7 +22,7 @@ if (isset($config['logo2']))
 if (isset($config['logo-safe']))
   {
     echo "<div class=\"row\">";
-    echo "<div class=\"col-xs-12\" style=\"padding-left:90px;\">";
+    echo "<div class=\"col-xs-12\">";
     echo "<a href=\"https://web.uniroma1.it/fac_smfn/questione-di-genere\" target=\"_blank\">";
     echo "<img style=\"max-height:80px;\" src=\"".htmlspecialchars($config['logo-safe'], ENT_QUOTES, 'UTF-8')."\">";
     echo "</a>";
