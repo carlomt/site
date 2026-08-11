@@ -37,6 +37,7 @@ if(!empty($_GET['blogaction']))
                 $file_content = file_get_contents($filename);
                 $file_content = code_parse($file_content);
                 $htmltext = bb_parse($file_content);
+                $htmltext = $purifier->purify($htmltext);
                 $words = preg_split('/[\s]+/', $htmltext, -1, PREG_SPLIT_NO_EMPTY);
                 foreach($words as $wordNumber=>$word)
                     {
